@@ -1,5 +1,5 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "X Be Gone",
     "version": "1.0",  
     "description": "Removes the ugly X from Twitter and replaces it with the original Twitter logo.",
