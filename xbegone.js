@@ -4,15 +4,13 @@ observer.observe(document.body, {
     subtree: true
 });
 
-var the_browser = undefined 
+var browserRuntime = undefined;
 
 async function init() {
-    if (typeof chrome !== "undefined") {
-        if (typeof browser !== "undefined") {
-            the_browser = browser
-        } else {
-            the_browser = chrome
-        }
+    if (typeof browser !== "undefined") {
+        browserRuntime = browser;
+    } else {
+        browserRuntime = chrome;
     }
 
     const logo = document.querySelector("header svg");
@@ -32,6 +30,6 @@ function replaceLogo(logo) {
 function replaceFavicon() {
     const favicon = document.createElement("link");
     favicon.rel = "icon";
-    favicon.href = the_browser.runtime.getURL("files/twitter.ico");
+    favicon.href = browserRuntime.runtime.getURL("files/twitter.ico");
     document.head.appendChild(favicon);
 }
