@@ -17,7 +17,7 @@
     ],
     "web_accessible_resources": [
         {
-            "resources": [ "files/twitter.ico" ],
+            "resources": ["files/twitter.ico"],
             "matches": ["*://*.twitter.com/*"],
             "extension_ids": ["*"]
         }
