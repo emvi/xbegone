@@ -4,7 +4,17 @@ observer.observe(document.body, {
     subtree: true
 });
 
+var the_browser = undefined 
+
 async function init() {
+    if (typeof chrome !== "undefined") {
+        if (typeof browser !== "undefined") {
+            the_browser = browser
+        } else {
+            the_browser = chrome
+        }
+    }
+
     const logo = document.querySelector("header svg");
 
     if (logo) {
@@ -22,6 +32,6 @@ function replaceLogo(logo) {
 function replaceFavicon() {
     const favicon = document.createElement("link");
     favicon.rel = "icon";
-    favicon.href = browser.runtime.getURL("files/twitter.ico");
+    favicon.href = the_browser.runtime.getURL("files/twitter.ico");
     document.head.appendChild(favicon);
 }
