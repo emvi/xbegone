@@ -1,5 +1,5 @@
 const observer = new MutationObserver(init);
-const titleObserver = new MutationObserver(handleTitleChange);
+const titleObserver = new MutationObserver(handlePageTitleChange);
 
 titleObserver.observe(document.querySelector("head"), {
     childList: true 
