@@ -1,4 +1,10 @@
 const observer = new MutationObserver(init);
+const titleObserver = new MutationObserver(handlePageTitleChange);
+
+titleObserver.observe(document.querySelector("head"), {
+    childList: true 
+});
+
 observer.observe(document.body, {
     childList: true,
     subtree: true
@@ -33,3 +39,23 @@ function replaceFavicon(browserRuntime) {
     favicon.href = browserRuntime.runtime.getURL("files/twitter.ico");
     document.head.appendChild(favicon);
 }
+
+function handlePageTitleChange(mutationsList) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === "childList") {
+                replacePageTitle();
+      }
+    }
+  }
+
+function replacePageTitle() {
+    const targetString = "/ X";
+    const replacementString = "/ Twitter";
+
+    if (document.title == "X"){
+        document.title = document.title.replace("X", "Twitter");
+    }else if (document.title.includes(targetString)){
+        document.title = document.title.replace(targetString, replacementString);
+    }
+  }
+  
